@@ -20,8 +20,16 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "~/components/ui/sidebar";
 import { cn } from "~/lib/utils";
+import localFont from "next/font/local";
+
+// Set up the custom font
+const meillina = localFont({
+  src: "./Meillina.ttf",
+  variable: "--font-meillina",
+});
 
 const items = [
   {
@@ -63,9 +71,27 @@ const projects = [
 
 export function AppSidebar() {
   const pathname = usePathname();
+  const { open } = useSidebar();
   return (
     <Sidebar collapsible="icon" variant="floating">
-      <SidebarHeader>Logo</SidebarHeader>
+      <SidebarHeader>
+        {!open && (
+          <span
+            className={`${meillina.className} items-center text-center text-3xl`}
+            style={{ color: "#020f40" }}
+          >
+            Sh
+          </span>
+        )}
+        {open && (
+          <span
+            className={`${meillina.className} items-center text-center text-3xl`}
+            style={{ color: "#020f40" }}
+          >
+            Shadwal
+          </span>
+        )}
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
@@ -108,7 +134,6 @@ export function AppSidebar() {
                             "flex size-6 items-center justify-center rounded-sm border bg-white text-sm text-primary",
                             {
                               "bg-primary text-white": true,
-                              // 'bg-primary text-white' : project.id === project.id
                             },
                           )}
                         >

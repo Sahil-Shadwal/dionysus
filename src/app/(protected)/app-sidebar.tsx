@@ -129,17 +129,32 @@ export function AppSidebar() {
                   <SidebarMenuItem key={projects.name}>
                     <SidebarMenuButton asChild>
                       <div>
-                        <div
-                          className={cn(
-                            "flex size-6 items-center justify-center rounded-sm border bg-white text-sm text-primary",
-                            {
-                              "bg-primary text-white": true,
-                            },
-                          )}
-                        >
-                          {projects.name[0]}
-                        </div>
-                        <span>{projects.name}</span>
+                        {!open ? (
+                          <div
+                            className={cn(
+                              "-ml-[2.65] flex min-h-[22px] min-w-[22px] items-center justify-center rounded-sm border bg-white text-xs text-primary",
+                              {
+                                "bg-primary text-white": true,
+                              },
+                            )}
+                          >
+                            {projects.name[0]}
+                          </div>
+                        ) : (
+                          <div className="flex items-center gap-2">
+                            <div
+                              className={cn(
+                                "flex h-8 w-8 items-center justify-center rounded-sm border bg-white text-sm text-primary",
+                                {
+                                  "bg-primary text-white": true,
+                                },
+                              )}
+                            >
+                              {projects.name[0]}
+                            </div>
+                            <span>{projects.name}</span>
+                          </div>
+                        )}
                       </div>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -149,8 +164,21 @@ export function AppSidebar() {
               <SidebarMenuItem>
                 <Link href="/create">
                   <Button size="sm" variant="outline" className="w-fit">
-                    <Plus />
-                    Create Project
+                    {!open ? (
+                      <div
+                        className={cn(
+                          "flex h-10 w-1.5 items-center justify-center rounded-lg transition-colors",
+                          "cursor-pointer",
+                        )}
+                      >
+                        <Plus />
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2">
+                        <Plus />
+                        Create Project
+                      </div>
+                    )}
                   </Button>
                 </Link>
               </SidebarMenuItem>

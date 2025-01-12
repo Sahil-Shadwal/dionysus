@@ -132,7 +132,7 @@ export function AppSidebar() {
                         {!open ? (
                           <div
                             className={cn(
-                              "-ml-[2.65] flex min-h-[22px] min-w-[22px] items-center justify-center rounded-sm border bg-white text-xs text-primary",
+                              "-ml-[2.6] flex min-h-[22px] min-w-[22px] items-center justify-center rounded-sm border bg-white text-xs text-primary",
                               {
                                 "bg-primary text-white": true,
                               },
